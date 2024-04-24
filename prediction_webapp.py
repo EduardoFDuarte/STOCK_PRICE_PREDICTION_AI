@@ -7,7 +7,7 @@ import math
 
 
 
-from keras.models import Sequential
+
 from keras.layers import LSTM, Dense
 import keras.backend as K
 import plotly.graph_objects as go
