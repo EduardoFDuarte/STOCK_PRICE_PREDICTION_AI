@@ -1,7 +1,16 @@
 
 import streamlit as st
 import numpy as np
+import math
+import matplotlib.pyplot as plt
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.metrics import mean_squared_error
 import yfinance as yf
+from keras.models import Sequential
+from keras.layers import LSTM, Dense
+import keras.backend as K
+import plotly.graph_objects as go
+from sklearn.metrics import mean_absolute_percentage_error
 
 
 # Set random seed for reproducibility
