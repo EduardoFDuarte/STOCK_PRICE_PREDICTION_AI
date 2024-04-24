@@ -1,5 +1,6 @@
 
 import streamlit as st
+import numpy as np
 
 # Set random seed for reproducibility
 np.random.seed(10)
