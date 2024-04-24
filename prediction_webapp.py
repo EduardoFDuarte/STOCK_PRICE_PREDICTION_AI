@@ -6,7 +6,7 @@ import math
 
 
 
-import yfinance as yf
+
 from keras.models import Sequential
 from keras.layers import LSTM, Dense
 import keras.backend as K
