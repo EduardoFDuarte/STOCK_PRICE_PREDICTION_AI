@@ -8,7 +8,7 @@ import math
 
 
 
-from keras.layers import LSTM, Dense
+
 import keras.backend as K
 import plotly.graph_objects as go
 from sklearn.metrics import mean_absolute_percentage_error
