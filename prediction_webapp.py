@@ -1,6 +1,7 @@
 
 import streamlit as st
 import numpy as np
+import yfinance as yf
 
 # Set random seed for reproducibility
 np.random.seed(10)
