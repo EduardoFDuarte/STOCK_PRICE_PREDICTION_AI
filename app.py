@@ -130,10 +130,10 @@ st.write('Test RMSE:', testScore)
 st.write('Train Percentage Error:', trainMape * 100)
 st.write('Test Percentage Error:', testMape * 100)
 
-import streamlit as st
+
 import pandas as pd
-import numpy as np
-import matplotlib.pyplot as plt
+
+
 
 # Define a function to determine if the price is going up or down
 def predict_price_direction(predictions, threshold=0.0):
@@ -166,8 +166,7 @@ plt.legend()
 # Display the plots in the Streamlit app
 st.pyplot(plt)
 
-import pandas as pd
-import numpy as np
+
 
 # Define a function to determine if the price is going up or down
 def predict_price_direction(predictions, actual_prices):
@@ -184,8 +183,7 @@ def predict_price_direction(predictions, actual_prices):
 # Streamlit app
 st.title('Price Direction Prediction')
 
-import pandas as pd
-import numpy as np
+
 
 # Define a function to determine if the price is going up or down
 def predict_price_direction(predictions, actual_prices):
