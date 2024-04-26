@@ -225,5 +225,4 @@ st.write("Predicted Price Directions for Each Day of Next Week:")
 df_next_week = pd.DataFrame({"Day": range(1, 8), "Predicted Price Direction": next_week_predictions})
 st.table(df_next_week)
 
-st.write("Overall Direction of Next Week:", max(set(next_week_predictions), key=next_week_predictions.
-
+st.write("Overall Direction of Next Week:", max(set(next_week_predictions), key=next_week_predictions.count))
