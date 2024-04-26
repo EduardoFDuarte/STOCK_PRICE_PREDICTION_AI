@@ -1,6 +1,5 @@
-
-
 import streamlit as st
+
 import numpy as np
 import math
 import matplotlib.pyplot as plt
@@ -13,7 +12,6 @@ import keras.backend as K
 import plotly.graph_objects as go
 from sklearn.metrics import mean_absolute_percentage_error
 
-
 # Set random seed for reproducibility
 np.random.seed(10)
 
@@ -25,13 +23,15 @@ def create_dataset(data, look_back=1):
         Y.append(data[i + look_back, 0])
     return np.array(X), np.array(Y)
 
+look_back = 1
+
 # Streamlit app
 st.title('Stock Price Prediction')
 
 # Sidebar for user input
 st.sidebar.header('Select Stock and Time Period')
-stock_symbol = st.sidebar.text_input('Enter Stock Symbol (e.g., AAPL):')
-time_period = st.sidebar.selectbox('Select Time Period:', ['1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '3y', '5y', '10y', 'ytd'])
+stock_symbol = st.sidebar.text_input('Enter Stock Symbol (e.g., AAPL):', 'AAPL')
+time_period = st.sidebar.selectbox('Select Time Period (The best Time Period is 3 years): 3y', ['1d', '5d', '1mo', '3mo', '6mo', '1y', '2y', '3y', '5y', '10y', 'ytd', '3y'])
 
 # Download stock data
 stock_data = yf.download(stock_symbol, period=time_period)
@@ -51,6 +51,7 @@ look_back = 1
 # Create dataset for LSTM
 trainX, trainY = create_dataset(train_data, look_back)
 testX, testY = create_dataset(test_data, look_back)
+
 
 # Define LSTM model
 model = Sequential()
@@ -131,41 +132,10 @@ st.write('Train Percentage Error:', trainMape * 100)
 st.write('Test Percentage Error:', testMape * 100)
 
 
+
+
+
 import pandas as pd
-
-
-
-# Define a function to determine if the price is going up or down
-def predict_price_direction(predictions, threshold=0.0):
-    price_changes = np.diff(predictions[:, 0])
-    direction = np.where(price_changes > threshold, 1, -1)  # 1 for going up, -1 for going down
-    return direction
-
-# Streamlit app
-st.title('Price Direction Prediction')
-
-# Assuming the variables trainPredict and testPredict are already defined
-
-# Calculate price movement predictions
-trainPredictDirection = predict_price_direction(trainPredict)
-testPredictDirection = predict_price_direction(testPredict)
-
-# Plot the results
-plt.figure(figsize=(10, 6))
-
-plt.subplot(2, 1, 1)
-plt.plot(trainPredictDirection, label='Predicted Train Price Movement')
-plt.title('Train Predictions')
-plt.legend()
-
-plt.subplot(2, 1, 2)
-plt.plot(testPredictDirection, label='Predicted Test Price Movement')
-plt.title('Test Predictions')
-plt.legend()
-
-# Display the plots in the Streamlit app
-st.pyplot(plt)
-
 
 
 # Define a function to determine if the price is going up or down
@@ -182,8 +152,6 @@ def predict_price_direction(predictions, actual_prices):
 
 # Streamlit app
 st.title('Price Direction Prediction')
-
-
 
 # Define a function to determine if the price is going up or down
 def predict_price_direction(predictions, actual_prices):
@@ -257,5 +225,5 @@ st.write("Predicted Price Directions for Each Day of Next Week:")
 df_next_week = pd.DataFrame({"Day": range(1, 8), "Predicted Price Direction": next_week_predictions})
 st.table(df_next_week)
 
-st.write("Overall Direction of Next Week:", max(set(next_week_predictions), key=next_week_predictions.count))
+st.write("Overall Direction of Next Week:", max(set(next_week_predictions), key=next_week_predictions.
 
