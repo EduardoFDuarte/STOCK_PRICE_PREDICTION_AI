@@ -16,7 +16,6 @@ This repository contains a machine learning project aimed at predicting stock pr
 * `numpy`
 * `pandas`
 * `matplotlib`
-* `seaborn`
 * `scikit-learn`
 * `tensorflow`
 * `keras`
